@@ -5,7 +5,7 @@
 namespace chess {
     class Move {
     public:
-        Move(Position position)
+        Move(Position const position)
             : position_{position} {}
 
         Position GetPosition() const {

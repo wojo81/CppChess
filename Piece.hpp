@@ -15,7 +15,7 @@ namespace chess {
         }
 
         bool MoveTo(Position const newPosition) {
-            for (auto const& move : moves_) {
+            for (auto & move : moves_) {
                 if (newPosition == move->GetPosition()) {
                     hasMoved_ = true;
                     move->DoAction();
@@ -26,11 +26,15 @@ namespace chess {
             return false;
         }
 
+        void ClearMoves() {
+            moves_.clear();
+        }
+
         virtual void SetMoves() = 0;
         virtual ~Piece() = default;
     protected:
         template<typename MoveType>
-        void AddMove(MoveType move) {
+        void AddMove(MoveType && move) {
             moves_.push_back(std::make_unique<MoveType>(std::move(move)))
         }
     private:
