@@ -3,18 +3,10 @@
 #include "Position.hpp"
 
 namespace chess {
-    class Move {
-    public:
-        Move(Position const position)
-            : position_{position} {}
-
-        Position GetPosition() const {
-            return position_;
-        }
+    struct Move {
+        Position const position;
 
         virtual void DoAction() {}
         virtual ~Move() = default;
-    private:
-        Position position_;
     };
-};
+}

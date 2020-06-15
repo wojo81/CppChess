@@ -16,10 +16,10 @@ namespace chess {
 
         bool MoveTo(Position const newPosition) {
             for (auto & move : moves_) {
-                if (newPosition == move->GetPosition()) {
+                if (newPosition == move->position) {
                     hasMoved_ = true;
                     move->DoAction();
-                    position_ = move->GetPosition();
+                    position_ = move->position;
                     return true;
                 }
             }
@@ -35,11 +35,11 @@ namespace chess {
     protected:
         template<typename MoveType>
         void AddMove(MoveType && move) {
-            moves_.push_back(std::make_unique<MoveType>(std::move(move)))
+            moves_.push_back(std::make_unique<MoveType>(std::move(move)));
         }
     private:
         Position position_;
         std::vector<std::unique_ptr<Move>> moves_;
         bool hasMoved_ = false;
     };
-};
+}
