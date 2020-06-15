@@ -7,8 +7,8 @@
 namespace chess {
     class Piece {
     public:
-        Piece(Position const position)
-            : position_{position} {}
+        Piece(Position const position) : 
+            position_{position} {}
 
         auto GetPosition() const -> Position {
             return position_;

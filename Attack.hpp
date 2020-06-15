@@ -5,7 +5,7 @@
 namespace chess {
     class Attack : public Move {
     public:
-        Attack(Piece const& attackedPiece) :
+        explicit Attack(Piece const& attackedPiece) :
             Move{attackedPiece.GetPosition()}, attackedPiece_{attackedPiece} {}
 
         auto DoAction() -> void override {
