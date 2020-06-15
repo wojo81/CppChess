@@ -5,7 +5,7 @@ namespace chess {
         int x, y;
     };
 
-    bool operator==(Position const left, Position const right) {
+    auto operator==(Position const left, Position const right) -> bool {
         return left.x == right.x && left.y == right.y;
     }
 };

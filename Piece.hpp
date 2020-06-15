@@ -10,11 +10,11 @@ namespace chess {
         Piece(Position const position)
             : position_{position} {}
 
-        Position GetPosition() const {
+        auto GetPosition() const -> Position {
             return position_;
         }
 
-        bool MoveTo(Position const newPosition) {
+        auto MoveTo(Position const newPosition) -> bool {
             for (auto & move : moves_) {
                 if (newPosition == move->position) {
                     hasMoved_ = true;
@@ -26,16 +26,16 @@ namespace chess {
             return false;
         }
 
-        void ClearMoves() {
+        auto ClearMoves() {
             moves_.clear();
         }
 
-        virtual void SetMoves() = 0;
+        virtual auto SetMoves() -> void = 0;
         virtual ~Piece() = default;
     protected:
         template<typename MoveType>
-        void AddMove(MoveType && move) {
-            moves_.push_back(std::make_unique<MoveType>(std::move(move)));
+        auto AddMove(MoveType move) {
+            moves_.push_back(std::make_unique<MoveType>(move));
         }
     private:
         Position position_;

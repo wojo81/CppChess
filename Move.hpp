@@ -6,7 +6,10 @@ namespace chess {
     struct Move {
         Position const position;
 
-        virtual void DoAction() {}
+        Move(Position const newPosition) :
+            position{newPosition} {}
+
+        virtual auto DoAction() -> void {}
         virtual ~Move() = default;
     };
 }
