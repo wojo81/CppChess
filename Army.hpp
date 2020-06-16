@@ -12,14 +12,14 @@ namespace chess {
 
         }
 
-        auto GetPieceAt(Position const position) -> Piece const* {
+        auto GetPieceAt(Position const position) -> Piece * const {
             for (auto & piece : pieces_)
                 if (piece->GetPosition() == position)
                     return piece.get();
             return nullptr;
         }
 
-        auto Contains(Position const position) -> bool {
+        auto HasPieceAt(Position const position) -> bool {
             return GetPieceAt(position) != nullptr;
         }
 

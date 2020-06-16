@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Piece.hpp"
+#include "Army.hpp"
 
 namespace chess {
     class Attack : public Move {
     public:
-        explicit Attack(Piece const& attackedPiece) :
+        Attack(Piece const& attackedPiece) :
             Move{attackedPiece.GetPosition()}, attackedPiece_{attackedPiece} {}
 
-        auto DoAction() -> void override {
-            
+        auto DoAction(Army &, Army & enemies) -> void override {
+            enemies.Kill(attackedPiece_);
         }
     private:
         Piece const& attackedPiece_;

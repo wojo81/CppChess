@@ -9,7 +9,7 @@ namespace chess {
         explicit Move(Position const newPosition) :
             position{newPosition} {}
 
-        virtual auto DoAction() -> void {}
+        virtual auto DoAction(class Army &, class Army &) -> void {}
         virtual ~Move() = default;
     };
 }

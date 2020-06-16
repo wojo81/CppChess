@@ -14,11 +14,11 @@ namespace chess {
             return position_;
         }
 
-        auto MoveTo(Position const newPosition) -> bool {
+        auto MoveTo(Position const newPosition, class Army & allies, class Army & enemies) -> bool {
             for (auto & move : moves_) {
                 if (newPosition == move->position) {
                     hasMoved_ = true;
-                    move->DoAction();
+                    move->DoAction(allies, enemies);
                     position_ = move->position;
                     return true;
                 }
