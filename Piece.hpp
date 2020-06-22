@@ -1,7 +1,6 @@
 #pragma once
 
 #include <memory>
-#include <vector>
 #include "Move.hpp"
 
 namespace chess {
@@ -33,7 +32,7 @@ namespace chess {
         virtual auto SetMoves() -> void = 0;
         virtual ~Piece() = default;
     protected:
-        template<typename MoveType>
+        template <typename MoveType>
         auto AddMove(MoveType move) {
             moves_.push_back(std::make_unique<MoveType>(move));
         }
