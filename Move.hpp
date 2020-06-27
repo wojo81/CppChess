@@ -10,6 +10,9 @@ namespace chess {
             position{newPosition} {}
 
         virtual auto DoAction(class Army &, class Army &) -> void {}
+        virtual auto Clone() const -> std::unique_ptr<Move> {
+            return std::make_unique<Move>(position);    
+        }
         virtual ~Move() = default;
     };
 }

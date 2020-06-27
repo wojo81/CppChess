@@ -9,6 +9,9 @@ namespace chess {
         Piece(Position const position) : 
             position_{position} {}
 
+        Piece(Piece const& other) :
+            position_{other.position_}, moves_{CloneAll(other.moves_)}, hasMoved_{other.hasMoved_} {}
+
         auto GetPosition() const -> Position {
             return position_;
         }
@@ -30,6 +33,7 @@ namespace chess {
         }
 
         virtual auto SetMoves() -> void = 0;
+        virtual auto Clone() const -> std::unique_ptr<Piece> = 0;
         virtual ~Piece() = default;
     protected:
         template <typename MoveType>

@@ -3,7 +3,6 @@
 #include <vector>
 
 namespace chess {
-
     class Position {
     public:
         enum Direction {

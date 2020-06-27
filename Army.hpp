@@ -1,16 +1,16 @@
 #pragma once
 
 #include <algorithm>
+#include "Cloner.hpp"
 #include "Piece.hpp"
 
 namespace chess {
     class Army {
     public:
-        explicit Army(bool const white) {
-            pieces_.reserve(16);
+        Army() {}
 
-
-        }
+        Army(Army const& other) :
+            pieces_{CloneAll(other.pieces_)} {}
 
         auto GetPieceAt(Position const position) -> Piece * const {
             for (auto & piece : pieces_)
