@@ -4,15 +4,14 @@
 #include "Cloner.hpp"
 
 namespace chess {
-    class Attack : public Cloner<Move, Attack> {
-    public:
-        Attack(Position const position, int const attackedPieceIndex) :
-            Cloner{position}, attackedPieceIndex_{attackedPieceIndex} {}
+	struct Attack : public Cloner<Move, Attack> {
+		int const attackedPieceIndex;
 
-        auto DoAction(Army &, Army & enemies) -> void override {
-            enemies.Take(attackedPieceIndex_);
-        }
-    private:
-        int const attackedPieceIndex_;
-    };
+		Attack(Position const position, Army const& enemies) :
+			Cloner{position}, attackedPieceIndex{enemies.GetPieceIndexAt(position)} {}
+
+		auto DoAction(Army &, Army & enemies) -> void override {
+			enemies.Take(attackedPieceIndex);
+		}
+	};
 }
