@@ -20,7 +20,7 @@ namespace chess {
 		std::vector<std::unique_ptr<Base>> newCloneables;
 		newCloneables.reserve(cloneables.size());
 		for (auto const& cloneable : cloneables)
-			newCloneables.push_back(cloneable);
+			newCloneables.push_back(cloneable->Clone());
 		return newCloneables;
 	}
 }
