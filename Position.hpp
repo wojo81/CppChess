@@ -1,42 +1,25 @@
 #pragma once
 
 #include <vector>
+#include "Direction.hpp"
 
 namespace chess {
-	class Position {
-	public:
-		enum Direction {
-			Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft
-		};
-
-		static auto GetNextDirection(Direction direction, int const spaces = 1) -> Direction {
-			return static_cast<Direction>((direction + spaces) % (UpLeft + 1));
-		}
-
-		Position(int x, int y) :
-			x_{x}, y_{y} {}
+	struct Position {
+		int x, y;
 
 		friend auto operator==(Position const left, Position const right) -> bool {
-			return left.x_ == right.x_ && left.y_ == right.y_;
-		}
-
-		auto GetX() -> int {
-			return x_;
-		}
-
-		auto GetY() -> int {
-			return y_;
+			return left.x == right.x && left.y == right.y;
 		}
 
 		auto InBounds() const -> bool {
-			return  x_ >= 0 && x_ < 8 && y_ >= 0 && y_ < 8;
+			return  x >= 0 && x < 8 && y >= 0 && y < 8;
 		}
 
-		auto GetAdjacent(Direction const direction, int const spaces = 1) const -> Position {
+		auto GetAdjacent(dir::Direction const direction, int const spaces = 1) const -> Position {
 			return *this + Displace(direction) * spaces;
 		}
 
-		auto GetLine(Direction const direction) const -> std::vector<Position> {
+		auto GetLine(dir::Direction const direction) const -> std::vector<Position> {
 			std::vector<Position> positions;
 			auto displacement = Displace(direction);
 			for (auto position = *this + displacement; position.InBounds(); position = position + displacement)
@@ -44,17 +27,16 @@ namespace chess {
 			return positions;
 		}
 	private:
-		int x_, y_;
-
 		auto operator+(Position const other) const -> Position {
-			return {x_ + other.x_, y_ + other.y_};
+			return {x + other.x, y + other.y};
 		}
 
 		auto operator*(int const value) const -> Position {
-			return {x_ * value, y_ * value};
+			return {x * value, y * value};
 		}
 
-		auto Displace(Direction const direction) const -> Position {
+		auto Displace(dir::Direction const direction) const -> Position {
+			using namespace dir;
 			switch (direction) {
 			case Up:
 				return {0, -1};
