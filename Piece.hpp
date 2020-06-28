@@ -32,6 +32,11 @@ namespace chess {
             moves_.clear();
         }
 
+        template <typename PieceType>
+        auto Cast() -> PieceType * {
+            return dynamic_cast<PieceType *>(this);
+        }
+
         virtual auto SetMoves() -> void = 0;
         virtual auto Clone() const -> std::unique_ptr<Piece> = 0;
         virtual ~Piece() = default;

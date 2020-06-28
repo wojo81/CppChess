@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "Position.hpp"
 
 namespace chess {

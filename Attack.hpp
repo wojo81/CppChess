@@ -6,13 +6,13 @@
 namespace chess {
     class Attack : public Cloner<Move, Attack> {
     public:
-        Attack(Piece const& attackedPiece) :
-            Cloner{attackedPiece.GetPosition()}, attackedPiece_{attackedPiece} {}
+        Attack(Position const position, int const attackedPieceIndex) :
+            Cloner{position}, attackedPieceIndex_{attackedPieceIndex} {}
 
         auto DoAction(Army &, Army & enemies) -> void override {
-            enemies.Kill(attackedPiece_);
+            enemies.Take(attackedPieceIndex_);
         }
     private:
-        Piece const& attackedPiece_;
+        int const attackedPieceIndex_;
     };
 }

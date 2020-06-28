@@ -11,7 +11,7 @@ namespace chess {
             Base{std::forward<Args>(args)...} {}
 
         auto Clone() const -> std::unique_ptr<Base> override {
-            return std::make_unique<Derived>(*dynamic_cast<Derived const*>(this));
+            return std::make_unique<Derived>(dynamic_cast<Derived const&>(*this));
         }
     };
 
