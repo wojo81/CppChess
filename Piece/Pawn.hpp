@@ -31,7 +31,7 @@ namespace chess {
 		Pawn(Position const position)  :
 			Cloner{position} {}
 		
-		void SetMoves(Army const& allies, Army const& enemies) override {
+		auto SetMoves(Army const& allies, Army const& enemies) -> void override {
 			justJumped_ = false;
 
 			if (auto const up = GetPosition().GetAdjacent(dir::Up); 
