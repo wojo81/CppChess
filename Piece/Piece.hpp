@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Move.hpp"
+#include "../Move/Move.hpp"
 
 namespace chess {
 	class Piece {

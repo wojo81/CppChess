@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Army.hpp"
-#include "Cloner.hpp"
+#include "../Utility/Army.hpp"
+#include "../Utility/Cloner.hpp"
 
 namespace chess {
 	struct Attack : public Cloner<Move, Attack> {

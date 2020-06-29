@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Position.hpp"
+#include "../Utility/Position.hpp"
 
 namespace chess {
 	struct Move {

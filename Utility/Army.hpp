@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Cloner.hpp"
-#include "Piece.hpp"
+#include "../Piece/Piece.hpp"
 
 namespace chess {
 	class Army {
@@ -15,7 +15,7 @@ namespace chess {
 			return *pieces_[pieceIndex];
 		}
 
-		auto operator[](int pieceIndex) const -> Piece const& {
+		auto operator[](int const pieceIndex) const -> Piece const& {
 			return *pieces_[pieceIndex];
 		}
 
