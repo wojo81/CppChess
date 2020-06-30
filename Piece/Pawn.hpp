@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Utility/Cloner.hpp"
-#include "../Utility/Army.hpp"
 #include "../Move/Attack.hpp"
+#include "../Utility/Army.hpp"
+#include "../Utility/Cloner.hpp"
 
 namespace chess {
 	class Pawn : public Cloner<Piece, Pawn> {
